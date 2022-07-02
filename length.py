@@ -1,25 +1,7 @@
-import csv
-from pickletools import int4
-import string
-
-# seed the pseudorandom number generator
-from random import seed
-from random import random
-from xmlrpc.client import DateTime
-import numpy as np
-from collections import Counter
-from matplotlib import pyplot as plt
-from datetime import timedelta
+import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib import dates as mpl_dates
-from datetime import datetime
-import numpy
-import random
-import sys
-import datetime
 
-import seaborn as sns
-User_data = pd.read_csv('/Users/matthewzhang/Desktop/Data/data.csv')
+User_data = pd.read_csv('data.csv')
 duration = User_data['duration_ms']
 
 musicClip = 0 #10 seconds or less
@@ -61,9 +43,7 @@ for item in howMany:
     else:
         continue
 
-    
 print("the interval of time that most of your music falls into is: " + str(lengthMusic[location]))
-
 
 plt.bar(lengthMusic, howMany)
 plt.show()
