@@ -1,0 +1,69 @@
+import csv
+
+from pickletools import int4
+import string
+
+# seed the pseudorandom number generator
+from random import seed
+from random import random
+from xmlrpc.client import DateTime
+import numpy as np
+from collections import Counter
+from matplotlib import pyplot as plt
+from datetime import timedelta
+import pandas as pd
+from matplotlib import dates as mpl_dates
+from datetime import datetime
+import numpy
+import random
+import statsmodels.formula.api as smf 
+import sys
+import datetime
+import numpy as np
+import matplotlib.pyplot as plt  # To visualize
+import pandas as pd  # To read data
+from sklearn.linear_model import LinearRegression
+
+import seaborn as sns
+df = pd.read_csv('/Users/matthewzhang/Desktop/Data/train_trips.csv')
+# oldDates = df['shopping_started_at']
+# dates = []
+# pates = []
+# df.index = pd.to_datetime(df['shopping_started_at'],format='%Y-%m-%d %H:%M:%S')
+# pates = df['shopping_started_at']
+# john = []
+
+# for x in range(len(pates)):
+#     john.append(str(pates[x]))
+
+    
+    
+# dates = pates.groupby(pd.Grouper(freq='M')).sum()
+
+# df.index = pd.to_datetime(df['shopping_started_at'],format='%Y-%m-%d %H:%M:%S')
+datesOnly = []
+dates = df['shopping_started_at']
+datess = [] 
+frequency = []
+
+for item in dates:
+    string = str(item)
+    datesOnly.append(string[0:10])
+
+for item in datesOnly:
+    if item not in datess:
+        datess.append(item)
+datesss = []
+for item in datess:
+    datesss.append(datetime.datetime.strptime(item, '%Y-%m-%d'))
+
+res = Counter(datesOnly) 
+resCounts = []   
+for item in datess:
+    resCounts.append(res[item])
+
+# print(resCounts)
+
+plt.scatter(datesss, resCounts)
+plt.plot(datesss, resCounts, color='red')
+plt.show()
